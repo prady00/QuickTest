@@ -1,4 +1,4 @@
-package com.prady00.test.models;
+package com.prady00.answer;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -19,8 +19,10 @@ import javax.validation.constraints.NotBlank;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
+import com.prady00.question.Question;
+
 @Entity
-public class Answers implements Serializable {
+public class Answer implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,7 +49,7 @@ public class Answers implements Serializable {
 	
 	private String notes;
 	
-	private Questions questions;
+	private Question questions;
 	
 	@Column(nullable = false, updatable = false)
 	@CreatedDate
@@ -118,7 +120,7 @@ public class Answers implements Serializable {
 	
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "question_id")
-	public Questions getQuestions() {
+	public Question getQuestions() {
 		return questions;
 	}
 

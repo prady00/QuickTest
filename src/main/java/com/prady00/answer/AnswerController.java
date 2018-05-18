@@ -1,16 +1,13 @@
-package com.prady00.test.controllers;
+package com.prady00.answer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.prady00.test.repositories.AnswersRepository;
 
-@RestController
-@RequestMapping("/answers")
-public class AnswersController {
+public class AnswerController {
 	
 	@Autowired
-	AnswersRepository answersRepo;
+	AnswerRepository answersRepo;
 
 }

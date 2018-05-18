@@ -1,4 +1,4 @@
-package com.prady00.test.models;
+package com.prady00.question;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -11,13 +11,14 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.prady00.answer.Answer;
 
 @Entity
 @Table(name = "questions")
 @JsonIgnoreProperties(value = {"createdAt", "updatedAt"}, 
 allowGetters = true)
 @EntityListeners(AuditingEntityListener.class)
-public class Questions implements Serializable{
+public class Question implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,7 +41,7 @@ public class Questions implements Serializable{
 	private Date updatedAt;
 	
 	
-	private Answers answers;
+	private Answer answers;
 	
 	public int getId() {
 		return id;
@@ -67,7 +68,7 @@ public class Questions implements Serializable{
 	}
     
     @OneToOne(mappedBy = "getQuestions")
-	public Answers getAnswers() {
+	public Answer getAnswers() {
 		return answers;
 	}
 

@@ -1,4 +1,4 @@
-package com.prady00.test;
+package com.prady00;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
