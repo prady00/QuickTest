@@ -117,13 +117,10 @@ public class Answer implements Serializable {
 		this.notes = notes;
 	}
 	
-	
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "question_id")
 	public Question getQuestions() {
 		return questions;
 	}
-
-	
 
 }
