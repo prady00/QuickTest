@@ -1,6 +1,8 @@
 package com.prady00.emails;
 
-public interface Emails {
+import javax.mail.MessagingException;
+
+public interface Email {
 	
 	public void setSendTo(String to);
 	
@@ -8,6 +10,6 @@ public interface Emails {
 	
 	public void setSubject(String subject);
 	
-	public void send();
+	public void send() throws Exception;
 	
 }

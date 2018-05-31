@@ -1,10 +1,23 @@
 package com.prady00.emails;
 
-public class PackCreatedMail implements Emails {
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailException;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+
+
+public class PackCreatedMail implements Email {
 
 	private String to;
 	private String body;
 	private String subject;
+	
+	@Autowired
+	public JavaMailSender sender;
+
 
 	public PackCreatedMail(String to, String body, String subject) {
 		super();
@@ -29,9 +42,17 @@ public class PackCreatedMail implements Emails {
 	}
 
 	@Override
-	public void send() {
-		// TODO Auto-generated method stub
+	public void send() throws MessagingException, MailException {
 		
+	        MimeMessage message = sender.createMimeMessage();
+	        MimeMessageHelper helper = new MimeMessageHelper(message);
+	        
+	        helper.setTo(this.to);
+	        helper.setText(this.body);
+	        helper.setSubject(this.subject);
+	        
+	        sender.send(message);
+	   
 	}
 	
 }

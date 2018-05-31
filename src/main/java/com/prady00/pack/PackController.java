@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.prady00.emails.Emails;
+import com.prady00.emails.Email;
 import com.prady00.emails.PackCreatedMail;
 import com.prady00.exceptions.UserAlreadyRequestedPack;
 import com.prady00.test.Test;
@@ -25,7 +25,7 @@ public class PackController {
 	TestRepository testRepository;
 	
 	@PostMapping("/")
-	public Pack createPack(@RequestBody Pack pack) throws UserAlreadyRequestedPack{
+	public Pack createPack(@RequestBody Pack pack) throws Exception{
 		
 		// check if there is already a pack of the user
 		List<Pack> packs = packRepository.findAllByEmail(pack.getEmail());
@@ -52,7 +52,7 @@ public class PackController {
 		
 		// send email to the user 
 		String body = "Hey, your tests are ready body";
-		Emails email = new PackCreatedMail(pack.getEmail(), body , "Your tests are ready, take them anytime!");
+		Email email = new PackCreatedMail(pack.getEmail(), body , "Your tests are ready, take them anytime!");
 		email.send();
 		
 		// send back success
